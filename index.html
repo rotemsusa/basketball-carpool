@@ -26,108 +26,153 @@
     .container { background: white; border-radius: 10px; padding: 6px; width: 99vw; max-width: 600px; display: none; }
     .container.active { display: block; }
 
-    h1 { text-align: center; color: #333; margin-bottom: 3px; font-size: 12px; font-weight: bold; }
+    /* Fix 1: increased from 12px */
+    h1 { text-align: center; color: #333; margin-bottom: 3px; font-size: 14px; font-weight: bold; }
 
-    .top-actions { display:flex; justify-content:center; gap:8px; margin: 6px 0 6px 0; }
-    .save-btn { padding: 8px 14px; border: none; border-radius: 6px; background: #10b981; color: white; font-weight: bold; cursor:pointer; font-size: 12px; }
-    .save-btn:disabled { background:#9ca3af; cursor:not-allowed; }
-    .dirty-indicator { font-size: 11px; color:#666; align-self:center; }
+    .top-actions { display: flex; justify-content: center; gap: 8px; margin: 6px 0; }
+    /* Fix 1: increased from 12px */
+    .save-btn { padding: 8px 14px; border: none; border-radius: 6px; background: #10b981; color: white; font-weight: bold; cursor: pointer; font-size: 14px; }
+    .save-btn:disabled { background: #9ca3af; cursor: not-allowed; }
 
-    .legend { display: flex; justify-content: center; gap: 5px; margin-bottom: 3px; padding: 3px; background: #f5f5f5; border-radius: 4px; }
-    .legend-item { display: flex; align-items: center; gap: 2px; font-size: 8px; font-weight: bold; }
-    .color-dot { width: 9px; height: 9px; border-radius: 50%; border: 1px solid #ddd; }
-    .color-dot.blue { background: #5BC0DE; }
-    .color-dot.green { background: #8BC34A; }
-    .color-dot.orange { background: #E91E90; }
-    .color-dot.red { background: #9C27B0; }
+    /* Fix 7: dirty indicator — red + bold when unsaved */
+    /* Fix 1: increased from 11px */
+    .dirty-indicator { font-size: 13px; color: #666; align-self: center; font-weight: bold; transition: color 0.2s; }
+    .dirty-indicator.unsaved { color: #ef4444; }
 
-    .week-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px; padding: 3px; background: #f5f5f5; border-radius: 4px; }
-    .week-nav button { padding: 3px 8px; border: none; border-radius: 3px; background: #555; color: white; font-size: 8px; font-weight: bold; cursor: pointer; }
-    .week-title { font-size: 9px; font-weight: bold; color: #333; }
+    /* Fix 1: increased from 8px; Fix 6: wraps for dynamic content */
+    .legend { display: flex; justify-content: center; gap: 8px; margin-bottom: 4px; padding: 4px; background: #f5f5f5; border-radius: 4px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: bold; }
+    /* Fix 1: increased from 9×9px */
+    .color-dot { width: 12px; height: 12px; border-radius: 50%; border: 1px solid #ddd; }
+    .color-dot.blue   { background: #5BC0DE; }
+    .color-dot.green  { background: #8BC34A; }
+    /* Fix 2: renamed from .orange → .pink (CSS class only; data value stays 'orange') */
+    .color-dot.pink   { background: #E91E90; }
+    .color-dot.red    { background: #9C27B0; }
 
-    .schedule-table { border-collapse: collapse; font-size: 11px; width: 100%; margin-bottom: 5px; }
-    .schedule-table th { background: #555; color: white; padding: 4px 2px; text-align: center; border: 1px solid #444; font-size: 12px; }
-    .schedule-table td { padding: 4px 1px; text-align: center; border: 1px solid #ddd; background: #f9f9f9; }
-    .schedule-table td.direction-cell { background: #e8e8e8; font-weight: bold; font-size: 12px; color: #333; width: 45px; }
+    .week-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; padding: 4px; background: #f5f5f5; border-radius: 4px; }
+    /* Fix 1: increased from 8px; Fix 8: min-height touch target */
+    .week-nav button { padding: 6px 12px; border: none; border-radius: 3px; background: #555; color: white; font-size: 13px; font-weight: bold; cursor: pointer; min-height: 36px; }
+    /* Fix 1: increased from 9px */
+    .week-title { font-size: 13px; font-weight: bold; color: #333; }
 
-    .day-header { font-size: 10px; color: #fff; display: block; opacity: 0.9; }
+    /* Fix 1: increased from 11px */
+    .schedule-table { border-collapse: collapse; font-size: 13px; width: 100%; margin-bottom: 5px; }
+    /* Fix 1: increased from 12px */
+    .schedule-table th { background: #555; color: white; padding: 6px 2px; text-align: center; border: 1px solid #444; font-size: 14px; }
+    .schedule-table td { padding: 4px 2px; text-align: center; border: 1px solid #ddd; background: #f9f9f9; }
+    /* Fix 1: increased from 12px */
+    .schedule-table td.direction-cell { background: #e8e8e8; font-weight: bold; font-size: 14px; color: #333; width: 45px; }
+    /* Fix 1: increased from 10px */
+    .day-header { font-size: 12px; color: #fff; display: block; opacity: 0.9; }
 
-    .trip-controls { display: flex; flex-direction: column; gap: 3px; align-items: center; }
-    select { padding: 3px 2px; border: 1px solid #ddd; border-radius: 3px; font-size: 11px; cursor: pointer; background: white; }
+    .trip-controls { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+    /* Fix 1: increased from 11px; Fix 8: min-height touch target */
+    select { padding: 5px 3px; border: 1px solid #ddd; border-radius: 3px; font-size: 13px; cursor: pointer; background: white; min-height: 32px; }
     select.color-select { width: 100%; font-weight: bold; }
-    select.color-select.blue { background: #5BC0DE; color: white; }
+    select.color-select.blue  { background: #5BC0DE; color: white; }
     select.color-select.green { background: #8BC34A; color: white; }
-    select.color-select.orange { background: #E91E90; color: white; }
-    select.color-select.red { background: #9C27B0; color: white; }
+    /* Fix 2: renamed from .orange → .pink */
+    select.color-select.pink  { background: #E91E90; color: white; }
+    select.color-select.red   { background: #9C27B0; color: white; }
     select.time-select { width: 100%; }
 
     .notes-row { background: #fff8e1 !important; }
-    .note-input { width: 100%; padding: 3px; border: 1px solid #ddd; border-radius: 3px; font-size: 10px; resize: none; font-family: Arial, sans-serif; }
+    /* Fix 1: increased from 10px */
+    .note-input { width: 100%; padding: 4px; border: 1px solid #ddd; border-radius: 3px; font-size: 12px; resize: none; font-family: Arial, sans-serif; }
 
     .requests-section { margin-bottom: 5px; padding: 5px; background: #f0f8ff; border-radius: 4px; }
-    .requests-title { font-size: 10px; font-weight: bold; color: #333; margin-bottom: 4px; }
-    .request-item { display: flex; gap: 4px; margin-bottom: 3px; align-items: center; }
-    .request-item select { width: 60px; padding: 3px; font-size: 8px; font-weight: bold; }
-    .request-item select.blue { background: #5BC0DE; color: white; }
+    /* Fix 1: increased from 10px */
+    .requests-title { font-size: 13px; font-weight: bold; color: #333; margin-bottom: 4px; }
+    .request-item { display: flex; gap: 4px; margin-bottom: 4px; align-items: center; }
+    /* Fix 1: increased from 8px; Fix 8: min-height touch target */
+    .request-item select { width: 70px; padding: 5px; font-size: 12px; font-weight: bold; min-height: 36px; }
+    .request-item select.blue  { background: #5BC0DE; color: white; }
     .request-item select.green { background: #8BC34A; color: white; }
-    .request-item select.orange { background: #E91E90; color: white; }
-    .request-item select.red { background: #9C27B0; color: white; }
-    .request-item textarea { flex: 1; padding: 3px; border: 1px solid #ddd; border-radius: 3px; font-size: 8px; resize: none; font-family: Arial, sans-serif; }
-    .add-request-btn { padding: 4px 10px; background: #4A90E2; color: white; border: none; border-radius: 3px; font-size: 8px; cursor: pointer; font-weight: bold; }
-    .remove-request-btn { padding: 2px 6px; background: #ef4444; color: white; border: none; border-radius: 3px; font-size: 7px; cursor: pointer; }
+    /* Fix 2: renamed from .orange → .pink */
+    .request-item select.pink  { background: #E91E90; color: white; }
+    .request-item select.red   { background: #9C27B0; color: white; }
+    /* Fix 1: increased from 8px */
+    .request-item textarea { flex: 1; padding: 5px; border: 1px solid #ddd; border-radius: 3px; font-size: 12px; resize: none; font-family: Arial, sans-serif; }
+    /* Fix 1: increased from 8px; Fix 8: min-height touch target */
+    .add-request-btn { padding: 6px 12px; background: #4A90E2; color: white; border: none; border-radius: 3px; font-size: 12px; cursor: pointer; font-weight: bold; min-height: 36px; }
+    /* Fix 1: increased from 7px; Fix 8: bigger tap target */
+    .remove-request-btn { padding: 5px 9px; background: #ef4444; color: white; border: none; border-radius: 3px; font-size: 12px; cursor: pointer; min-height: 36px; }
 
     .upload-area { margin-bottom: 3px; padding: 5px; background: #f5f5f5; border-radius: 4px; text-align: center; }
-    .upload-label { display: inline-block; padding: 5px 12px; background: #666; color: white; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 9px; }
+    /* Fix 1: increased from 9px; Fix 8: min-height touch target */
+    .upload-label { display: inline-block; padding: 8px 16px; background: #666; color: white; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px; min-height: 36px; line-height: 20px; }
     input[type="file"] { display: none; }
-    .file-name { font-size: 8px; color: #666; margin-top: 3px; }
+    /* Fix 1: increased from 8px */
+    .file-name { font-size: 12px; color: #666; margin-top: 3px; }
     .image-preview { margin-top: 3px; width: 100%; max-height: 120px; border-radius: 4px; display: none; object-fit: contain; border: 1px solid #ddd; cursor: pointer; }
     .image-preview.show { display: block; }
     .image-preview.zoomed { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; max-height: 100vh; background: rgba(0,0,0,0.9); z-index: 1000; border-radius: 0; object-fit: contain; padding: 20px; }
 
     .approval-section { padding: 8px; background: #f0f8ff; border-radius: 4px; margin-top: 5px; }
-    .approval-title { font-size: 10px; font-weight: bold; color: #333; margin-bottom: 6px; text-align: center; }
-    .approval-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-bottom: 5px; }
-    .approve-btn { padding: 8px; border: 2px solid; border-radius: 6px; font-size: 10px; font-weight: bold; cursor: pointer; color: white; opacity: 0.5; transition: opacity 0.3s; }
-    .approve-btn.blue { background: #5BC0DE; border-color: #46A5C2; }
+    /* Fix 1: increased from 10px */
+    .approval-title { font-size: 13px; font-weight: bold; color: #333; margin-bottom: 6px; text-align: center; }
+    .approval-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 5px; }
+    /* Fix 1: increased from 10px; Fix 8: min-height 44px for comfortable tapping */
+    .approve-btn { padding: 12px 8px; border: 2px solid; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer; color: white; opacity: 0.5; transition: opacity 0.3s; min-height: 44px; }
+    .approve-btn.blue  { background: #5BC0DE; border-color: #46A5C2; }
     .approve-btn.green { background: #8BC34A; border-color: #6FA032; }
-    .approve-btn.orange { background: #E91E90; border-color: #C41878; }
-    .approve-btn.red { background: #9C27B0; border-color: #7B1FA2; }
+    /* Fix 2: renamed from .orange → .pink */
+    .approve-btn.pink  { background: #E91E90; border-color: #C41878; }
+    .approve-btn.red   { background: #9C27B0; border-color: #7B1FA2; }
     .approve-btn.approved { opacity: 1; box-shadow: 0 0 10px rgba(0,0,0,0.3); }
     .approve-btn .check-mark { display: none; font-size: 14px; }
     .approve-btn.approved .check-mark { display: inline; }
 
-    .lock-status { text-align: center; font-size: 9px; padding: 5px; border-radius: 4px; font-weight: bold; }
+    /* Fix 1: increased from 9px */
+    .lock-status { text-align: center; font-size: 12px; padding: 5px; border-radius: 4px; font-weight: bold; }
     .lock-status.locked { background: #ffc107; color: #333; }
 
     .admin-panel { margin-top: 5px; padding: 8px; background: #fff0f0; border: 2px solid #e74c3c; border-radius: 6px; }
-    .admin-panel-title { font-size: 11px; font-weight: bold; color: #e74c3c; text-align: center; margin-bottom: 6px; }
-    .admin-badge { display: inline-block; padding: 1px 6px; background: #e74c3c; color: white; border-radius: 3px; font-size: 8px; font-weight: bold; }
+    /* Fix 1: increased from 11px */
+    .admin-panel-title { font-size: 13px; font-weight: bold; color: #e74c3c; text-align: center; margin-bottom: 6px; }
+    /* Fix 1: increased from 8px */
+    .admin-badge { display: inline-block; padding: 2px 8px; background: #e74c3c; color: white; border-radius: 3px; font-size: 12px; font-weight: bold; }
     .admin-actions { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
-    .admin-btn { padding: 6px 10px; border: none; border-radius: 4px; font-size: 9px; font-weight: bold; cursor: pointer; color: white; }
-    .admin-btn.unlock { background: #e67e22; }
+    /* Fix 1: increased from 9px; Fix 8: min-height touch target */
+    .admin-btn { padding: 8px 12px; border: none; border-radius: 4px; font-size: 12px; font-weight: bold; cursor: pointer; color: white; min-height: 36px; }
+    .admin-btn.unlock          { background: #e67e22; }
     .admin-btn.reset-approvals { background: #9b59b6; }
-    .admin-btn.delete-image { background: #e74c3c; }
-    .admin-btn.clear-requests { background: #34495e; }
+    .admin-btn.delete-image    { background: #e74c3c; }
+    .admin-btn.clear-requests  { background: #34495e; }
     .admin-btn:active { opacity: 0.7; }
 
-    .zoom-controls { display: flex; justify-content: center; gap: 6px; margin-bottom: 3px; }
-    .zoom-btn { width: 28px; height: 28px; border: 1px solid #ccc; border-radius: 4px; background: #f5f5f5; font-size: 16px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .zoom-controls { display: flex; justify-content: center; gap: 6px; margin-bottom: 4px; }
+    /* Fix 8: increased from 28×28px */
+    .zoom-btn { width: 36px; height: 36px; border: 1px solid #ccc; border-radius: 4px; background: #f5f5f5; font-size: 18px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; }
     .zoom-btn:active { background: #ddd; }
-    .zoom-level { font-size: 9px; color: #666; align-self: center; min-width: 30px; text-align: center; }
+    /* Fix 1: increased from 9px */
+    .zoom-level { font-size: 12px; color: #666; align-self: center; min-width: 36px; text-align: center; }
 
     .smart-fill-section { margin-bottom: 5px; padding: 8px; background: #f0fff4; border: 1px solid #10b981; border-radius: 6px; }
-    .smart-fill-title { font-size: 10px; font-weight: bold; color: #065f46; margin-bottom: 5px; }
-    .smart-fill-textarea { width: 100%; padding: 6px; border: 1px solid #10b981; border-radius: 4px; font-size: 9px; resize: none; font-family: Arial, sans-serif; direction: rtl; }
+    /* Fix 1: increased from 10px */
+    .smart-fill-title { font-size: 13px; font-weight: bold; color: #065f46; margin-bottom: 5px; }
+    /* Fix 1: increased from 9px */
+    .smart-fill-textarea { width: 100%; padding: 6px; border: 1px solid #10b981; border-radius: 4px; font-size: 13px; resize: none; font-family: Arial, sans-serif; direction: rtl; }
     .smart-fill-row { display: flex; gap: 5px; margin-top: 5px; align-items: center; }
-    .smart-fill-select { padding: 4px; border: 1px solid #10b981; border-radius: 4px; font-size: 8px; background: white; flex-shrink: 0; }
-    .smart-fill-btn { padding: 5px 12px; background: #10b981; color: white; border: none; border-radius: 4px; font-size: 9px; font-weight: bold; cursor: pointer; white-space: nowrap; }
+    /* Fix 1: increased from 8px; Fix 8: min-height touch target */
+    .smart-fill-select { padding: 6px; border: 1px solid #10b981; border-radius: 4px; font-size: 12px; background: white; flex-shrink: 0; min-height: 36px; }
+    /* Fix 1: increased from 9px; Fix 8: min-height touch target */
+    .smart-fill-btn { padding: 8px 14px; background: #10b981; color: white; border: none; border-radius: 4px; font-size: 13px; font-weight: bold; cursor: pointer; white-space: nowrap; min-height: 36px; }
     .smart-fill-btn:hover { background: #059669; }
-    .smart-fill-preview { margin-top: 5px; font-size: 8px; color: #065f46; background: #d1fae5; padding: 4px; border-radius: 3px; display: none; }
+    /* Fix 1: increased from 8px */
+    .smart-fill-preview { margin-top: 5px; font-size: 12px; color: #065f46; background: #d1fae5; padding: 4px; border-radius: 3px; display: none; }
+
+    /* Fix 9: loading overlay + spinner */
+    .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.85); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2000; }
+    .loading-spinner { width: 44px; height: 44px; border: 5px solid #e5e7eb; border-top-color: #4A90E2; border-radius: 50%; animation: spin 0.75s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text { margin-top: 14px; font-size: 15px; color: #555; font-weight: bold; }
 
     .status { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); padding: 12px 24px; border-radius: 25px; color: white; font-weight: bold; display: none; z-index: 1000; font-size: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
     .status.saving { background: #f59e0b; display: block; }
-    .status.saved { background: #10b981; display: block; }
-    .status.error { background: #ef4444; display: block; }
+    .status.saved  { background: #10b981; display: block; }
+    .status.error  { background: #ef4444; display: block; }
   </style>
 </head>
 <body>
@@ -143,13 +188,13 @@
   </div>
 
   <div class="container" id="appContainer">
-    <h1>קארפול כדורסל <span id="userName" style="font-size:9px; color:#666;"></span>
-      <button onclick="logout()" style="float:left; padding:3px 8px; font-size:8px; border:none; background:#999; color:white; border-radius:3px; cursor:pointer;">החלף</button>
+    <h1>קארפול כדורסל <span id="userName" style="font-size:11px; color:#666;"></span>
+      <button onclick="logout()" style="float:left; padding:4px 10px; font-size:12px; border:none; background:#999; color:white; border-radius:3px; cursor:pointer;">החלף</button>
     </h1>
 
     <div class="top-actions">
       <button class="save-btn" id="saveBtn" onclick="saveNow()">שמור לגוגל שיט</button>
-      <div class="dirty-indicator" id="dirtyIndicator">לא נשמר</div>
+      <div class="dirty-indicator" id="dirtyIndicator">✓ נשמר</div>
     </div>
 
     <div class="zoom-controls">
@@ -158,12 +203,8 @@
       <button class="zoom-btn" onclick="changeZoom(10)">+</button>
     </div>
 
-    <div class="legend">
-      <div class="legend-item"><div class="color-dot blue"></div><span>תכלת=אורי</span></div>
-      <div class="legend-item"><div class="color-dot green"></div><span>ירוק=נועם</span></div>
-      <div class="legend-item"><div class="color-dot orange"></div><span>ורוד=טמיר</span></div>
-      <div class="legend-item"><div class="color-dot red"></div><span>סגול=עדי</span></div>
-    </div>
+    <!-- Fix 6: legend populated from PLAYERS config in JS -->
+    <div class="legend" id="legend"></div>
 
     <div class="week-nav">
       <button onclick="changeWeek(-1)">◄ קודם</button>
@@ -204,94 +245,125 @@
 
     <div class="approval-section">
       <div class="approval-title">אישור סידור</div>
-      <div class="approval-buttons">
-        <button class="approve-btn blue" id="approve-blue" onclick="toggleApproval('blue')"><span class="check-mark">✓</span> אורי</button>
-        <button class="approve-btn green" id="approve-green" onclick="toggleApproval('green')"><span class="check-mark">✓</span> נועם</button>
-        <button class="approve-btn orange" id="approve-orange" onclick="toggleApproval('orange')"><span class="check-mark">✓</span> טמיר</button>
-        <button class="approve-btn red" id="approve-red" onclick="toggleApproval('red')"><span class="check-mark">✓</span> עדי</button>
-      </div>
+      <!-- Fix 6: approval buttons populated from PLAYERS config in JS -->
+      <div class="approval-buttons" id="approvalButtons"></div>
       <div class="lock-status" id="lockStatus"></div>
     </div>
 
     <div class="admin-panel" id="adminPanel" style="display:none;">
       <div class="admin-panel-title">פאנל מנהל</div>
       <div class="admin-actions">
-        <button class="admin-btn unlock" onclick="adminUnlock()">בטל נעילה</button>
+        <button class="admin-btn unlock"          onclick="adminUnlock()">בטל נעילה</button>
         <button class="admin-btn reset-approvals" onclick="adminResetApprovals()">אפס אישורים</button>
-        <button class="admin-btn delete-image" onclick="adminDeleteImage()">מחק תמונה</button>
-        <button class="admin-btn clear-requests" onclick="adminClearRequests()">מחק בקשות</button>
+        <button class="admin-btn delete-image"    onclick="adminDeleteImage()">מחק תמונה</button>
+        <button class="admin-btn clear-requests"  onclick="adminClearRequests()">מחק בקשות</button>
       </div>
     </div>
+  </div>
+
+  <!-- Fix 9: loading overlay shown during server fetches -->
+  <div id="loadingOverlay" class="loading-overlay" style="display:none;">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">טוען...</div>
   </div>
 
   <div id="status" class="status"></div>
 
   <script>
-    const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday'];
-    const DAY_NAMES = ['א׳', 'ב׳', 'ג׳', 'ד׳', 'ה׳'];
-    const DIRECTIONS = [{ key: 'out', label: 'הלוך' }, { key: 'return', label: 'חזור' }];
+    const DAYS      = ['sunday','monday','tuesday','wednesday','thursday'];
+    const DAY_NAMES = ['א׳','ב׳','ג׳','ד׳','ה׳'];
+    const DIRECTIONS = [{ key:'out', label:'הלוך' }, { key:'return', label:'חזור' }];
 
-    const COLORS = [
-      { value: '', label: '---', class: '' },
-      { value: 'blue', label: 'אורי', class: 'blue' },
-      { value: 'green', label: 'נועם', class: 'green' },
-      { value: 'orange', label: 'טמיר', class: 'orange' },
-      { value: 'red', label: 'עדי', class: 'red' }
+    // Fix 6: single source of truth for all player data.
+    // data `color` key is preserved as-is (server/localStorage compatibility).
+    // `cssClass` is the CSS class used for styling (fix 2: Tamir is 'pink', not 'orange').
+    const PLAYERS = [
+      { color: 'blue',   name: 'אורי', hebrewColor: 'תכלת', cssClass: 'blue'  },
+      { color: 'green',  name: 'נועם', hebrewColor: 'ירוק',  cssClass: 'green' },
+      { color: 'orange', name: 'טמיר', hebrewColor: 'ורוד',  cssClass: 'pink'  },
+      { color: 'red',    name: 'עדי',  hebrewColor: 'סגול',  cssClass: 'red'   },
     ];
 
+    // Derived from PLAYERS — no duplication
+    const COLORS = [
+      { value: '', label: '---', cssClass: '' },
+      ...PLAYERS.map(p => ({ value: p.color, label: p.name, cssClass: p.cssClass }))
+    ];
+
+    // Helper: fresh approvals object keyed by player color (data key)
+    function makeApprovals() {
+      return Object.fromEntries(PLAYERS.map(p => [p.color, false]));
+    }
+
     const TIMES = [];
-    for (let hour = 15; hour <= 21; hour++) {
-      for (let minute = 0; minute < 60; minute += 15) {
-        if (hour === 21 && minute > 30) break;
-        TIMES.push(`${hour.toString().padStart(2, '0')}:${minute.toString().padStart(2, '0')}`);
+    for (let h = 15; h <= 21; h++) {
+      for (let m = 0; m < 60; m += 15) {
+        if (h === 21 && m > 30) break;
+        TIMES.push(`${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')}`);
       }
     }
 
-    let scheduleData = {};
-    // יום שישי (5) ושבת (6) – קפוץ לשבוע הבא
+    let scheduleData     = {};
     let currentWeekOffset = (new Date().getDay() >= 5) ? 1 : 0;
-    let requests = [];
-    let approvals = { blue: false, green: false, orange: false, red: false };
-    let isLocked = false;
-
-    // Image state (saved in Google Drive via Apps Script)
-    let scheduleImageUrl = '';
+    let requests         = [];
+    let approvals        = makeApprovals();
+    let isLocked         = false;
+    let scheduleImageUrl  = '';
     let scheduleImageName = '';
     let scheduleImageData = '';
-
-    let currentUser = null;
-
-    let isDirty = false;
-    let isSaving = false;
+    let currentUser      = null;
+    let isDirty          = false;
+    let isSaving         = false;
 
     const API_URL = "https://basketball-carpool-backend-246561042500.me-west1.run.app/api";
 
+    // Fix 9: loading overlay helpers
+    function showLoading() { document.getElementById('loadingOverlay').style.display = 'flex'; }
+    function hideLoading() { document.getElementById('loadingOverlay').style.display = 'none'; }
+
     function init() {
+      buildLegend();           // Fix 6
+      buildApprovalButtons();  // Fix 6
+
       const savedUser = localStorage.getItem('carpool_user');
       if (savedUser) {
         currentUser = JSON.parse(savedUser);
         showApp();
       }
 
-      const loginBtn = document.getElementById('loginBtn');
-      const accessCodeInput = document.getElementById('accessCodeInput');
-
-      accessCodeInput.addEventListener('keypress', (e) => {
+      document.getElementById('accessCodeInput').addEventListener('keypress', e => {
         if (e.key === 'Enter') handleLogin();
       });
-      loginBtn.addEventListener('click', handleLogin);
+      document.getElementById('loginBtn').addEventListener('click', handleLogin);
 
-      window.addEventListener('beforeunload', (e) => {
-        if (isDirty) {
-          e.preventDefault();
-          e.returnValue = '';
-        }
+      window.addEventListener('beforeunload', e => {
+        if (isDirty) { e.preventDefault(); e.returnValue = ''; }
       });
+    }
+
+    // Fix 6: legend built from PLAYERS
+    function buildLegend() {
+      document.getElementById('legend').innerHTML = PLAYERS.map(p =>
+        `<div class="legend-item">
+          <div class="color-dot ${p.cssClass}"></div>
+          <span>${p.hebrewColor}=${p.name}</span>
+        </div>`
+      ).join('');
+    }
+
+    // Fix 6: approval buttons built from PLAYERS
+    // Note: id uses p.color (data key); class uses p.cssClass (visual)
+    function buildApprovalButtons() {
+      document.getElementById('approvalButtons').innerHTML = PLAYERS.map(p =>
+        `<button class="approve-btn ${p.cssClass}" id="approve-${p.color}" onclick="toggleApproval('${p.color}')">
+          <span class="check-mark">✓</span> ${p.name}
+        </button>`
+      ).join('');
     }
 
     async function handleLogin() {
       const accessCode = document.getElementById('accessCodeInput').value.trim();
-      const errorMsg = document.getElementById('errorMsg');
+      const errorMsg   = document.getElementById('errorMsg');
 
       if (!accessCode) {
         errorMsg.textContent = 'נא להזין קוד גישה';
@@ -307,8 +379,7 @@
         const data = await response.json();
 
         if (data.success) {
-          const role = data.role || 'user';
-          currentUser = { accessCode: accessCode, role: role };
+          currentUser = { accessCode, role: data.role || 'user' };
           localStorage.setItem('carpool_user', JSON.stringify(currentUser));
           await showApp();
         } else {
@@ -322,15 +393,12 @@
       }
     }
 
-    function isAdmin() {
-      return currentUser && currentUser.role === 'admin';
-    }
+    function isAdmin() { return currentUser && currentUser.role === 'admin'; }
 
     async function showApp() {
       document.getElementById('loginScreen').style.display = 'none';
       document.getElementById('appContainer').classList.add('active');
 
-      // Show admin badge and panel
       if (isAdmin()) {
         document.getElementById('userName').innerHTML = '<span class="admin-badge">מנהל</span>';
         document.getElementById('adminPanel').style.display = 'block';
@@ -341,40 +409,38 @@
 
       updateWeekDisplay();
 
-      await loadWeekData(); // server first
+      showLoading(); // Fix 9: spinner on initial load
+      await loadWeekData();
+      hideLoading();
+
       renderAll();
       applyZoom();
 
-      const imageUpload = document.getElementById('imageUpload');
-      const imagePreview = document.getElementById('imagePreview');
-
-      imageUpload.addEventListener('change', handleImageUpload);
-      imagePreview.addEventListener('click', function() { this.classList.toggle('zoomed'); });
+      document.getElementById('imageUpload').addEventListener('change', handleImageUpload);
+      document.getElementById('imagePreview').addEventListener('click', function () {
+        this.classList.toggle('zoomed');
+      });
 
       setDirty(false);
     }
 
     function logout() {
       localStorage.removeItem('carpool_user');
-      currentUser = null;
-
-      scheduleData = {};
-      requests = [];
-      approvals = { blue: false, green: false, orange: false, red: false };
-      isLocked = false;
-
-      // Clear image state (next login will reload from server/cache)
-      scheduleImageUrl = '';
+      currentUser      = null;
+      scheduleData     = {};
+      requests         = [];
+      approvals        = makeApprovals(); // Fix 6: derived from PLAYERS
+      isLocked         = false;
+      scheduleImageUrl  = '';
       scheduleImageName = '';
       scheduleImageData = '';
 
-      // Clear UI elements related to image upload
       try { document.getElementById('imageUpload').value = ''; } catch (_) {}
       try { document.getElementById('fileName').textContent = ''; } catch (_) {}
       try {
-        const preview = document.getElementById('imagePreview');
-        preview.src = '';
-        preview.classList.remove('show', 'zoomed');
+        const p = document.getElementById('imagePreview');
+        p.src = '';
+        p.classList.remove('show', 'zoomed');
       } catch (_) {}
 
       setDirty(false);
@@ -386,29 +452,27 @@
     }
 
     function getWeekDates(offset) {
-      const today = new Date();
+      const today  = new Date();
       const sunday = new Date(today);
-      sunday.setDate(today.getDate() - today.getDay() + (offset * 7));
-
-      const dates = [];
-      for (let i = 0; i < 5; i++) {
+      sunday.setDate(today.getDate() - today.getDay() + offset * 7);
+      return Array.from({ length: 5 }, (_, i) => {
         const d = new Date(sunday);
         d.setDate(sunday.getDate() + i);
-        dates.push(d);
-      }
-      return dates;
+        return d;
+      });
     }
 
     function getWeekKey(offset) {
-      const dates = getWeekDates(offset);
-      return `${dates[0].getFullYear()}-${dates[0].getMonth() + 1}-${dates[0].getDate()}`;
+      const d = getWeekDates(offset)[0];
+      return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
     }
 
     function formatDate(d) { return `${d.getDate()}/${d.getMonth() + 1}`; }
 
     function updateWeekDisplay() {
       const dates = getWeekDates(currentWeekOffset);
-      document.getElementById('weekTitle').textContent = `${formatDate(dates[0])} - ${formatDate(dates[4])}`;
+      document.getElementById('weekTitle').textContent =
+        `${formatDate(dates[0])} - ${formatDate(dates[4])}`;
 
       const dateHeaders = document.getElementById('dateHeaders');
       dateHeaders.innerHTML = '<th></th>';
@@ -421,13 +485,15 @@
 
     async function changeWeek(direction) {
       if (isDirty) {
-        const ok = confirm('יש שינויים שלא נשמרו. לעבור שבוע בלי לשמור?');
-        if (!ok) return;
+        if (!confirm('יש שינויים שלא נשמרו. לעבור שבוע בלי לשמור?')) return;
       }
-
       currentWeekOffset += direction;
       updateWeekDisplay();
+
+      showLoading(); // Fix 9: spinner during week navigation
       await loadWeekData();
+      hideLoading();
+
       renderAll();
       setDirty(false);
     }
@@ -442,16 +508,15 @@
 
     function getProxiedImageUrl(driveUrl) {
       if (!driveUrl) return '';
-      // Route Google Drive image through our proxy to avoid CORS issues
       return API_URL + '/image-proxy?url=' + encodeURIComponent(driveUrl);
     }
 
     function renderImage() {
-      const preview = document.getElementById('imagePreview');
+      const preview    = document.getElementById('imagePreview');
       const fileNameEl = document.getElementById('fileName');
 
-      // Priority 1: local base64 data (new upload, not yet saved)
-      if (scheduleImageData) {
+      // Fix 4: guard against 'REMOVE' sentinel being used as an image src
+      if (scheduleImageData && scheduleImageData !== 'REMOVE') {
         preview.onerror = null;
         preview.src = scheduleImageData;
         preview.classList.add('show');
@@ -459,21 +524,16 @@
         return;
       }
 
-      // Priority 2: server URL via proxy
       if (scheduleImageUrl) {
         const proxiedUrl = getProxiedImageUrl(scheduleImageUrl);
-        preview.onerror = function() {
+        preview.onerror = () => {
           preview.classList.remove('show');
           fileNameEl.textContent = '⚠ לא ניתן לטעון תמונה';
         };
-        // Add auth header via fetch, then set as blob URL
         fetch(proxiedUrl, {
           headers: { 'X-API-Key': currentUser ? currentUser.accessCode : '' }
         })
-        .then(resp => {
-          if (!resp.ok) throw new Error('Failed');
-          return resp.blob();
-        })
+        .then(r => { if (!r.ok) throw new Error('Failed'); return r.blob(); })
         .then(blob => {
           const blobUrl = URL.createObjectURL(blob);
           preview.onerror = null;
@@ -498,10 +558,9 @@
       tbody.innerHTML = '';
 
       DIRECTIONS.forEach(direction => {
-        const tr = document.createElement('tr');
-
+        const tr   = document.createElement('tr');
         const tdDir = document.createElement('td');
-        tdDir.className = 'direction-cell';
+        tdDir.className  = 'direction-cell';
         tdDir.textContent = direction.label;
         tr.appendChild(tdDir);
 
@@ -511,79 +570,68 @@
             <div class="trip-controls">
               ${createColorSelect(direction.key, day)}
               ${createTimeSelect(direction.key, day)}
-            </div>
-          `;
+            </div>`;
           tr.appendChild(td);
         });
-
         tbody.appendChild(tr);
       });
 
-      const notesRow = document.createElement('tr');
+      const notesRow  = document.createElement('tr');
       notesRow.className = 'notes-row';
-      const tdLabel = document.createElement('td');
-      tdLabel.className = 'direction-cell';
+      const tdLabel   = document.createElement('td');
+      tdLabel.className  = 'direction-cell';
       tdLabel.textContent = 'הערות';
       notesRow.appendChild(tdLabel);
 
-      DAYS.forEach((day) => {
-        const td = document.createElement('td');
+      DAYS.forEach(day => {
+        const td        = document.createElement('td');
         const savedNote = scheduleData.notes?.[day] || '';
-        td.innerHTML = `<textarea class="note-input" data-day="${day}" rows="2" placeholder="הערה...">${savedNote}</textarea>`;
+        td.innerHTML    = `<textarea class="note-input" data-day="${day}" rows="2" placeholder="הערה...">${savedNote}</textarea>`;
         notesRow.appendChild(td);
       });
-
       tbody.appendChild(notesRow);
 
-      document.querySelectorAll('select').forEach(select => {
-        select.addEventListener('change', handleChange);
-      });
-
-      document.querySelectorAll('.note-input').forEach(textarea => {
-        textarea.addEventListener('input', handleNoteChange);
-      });
+      document.querySelectorAll('select').forEach(s     => s.addEventListener('change', handleChange));
+      document.querySelectorAll('.note-input').forEach(t => t.addEventListener('input', handleNoteChange));
 
       if (isLocked) disableInputs(); else enableInputs();
-      // שמור זום אחרי רינדור מחדש
       setTimeout(applyZoom, 0);
     }
 
     function createColorSelect(direction, day) {
-      const savedColor = (scheduleData[direction] && scheduleData[direction][day] && scheduleData[direction][day].color) || '';
-      let html = `<select class="color-select ${savedColor}" data-direction="${direction}" data-day="${day}" data-type="color">`;
-      COLORS.forEach(color => {
-        html += `<option value="${color.value}" ${color.value === savedColor ? 'selected' : ''}>${color.label}</option>`;
+      const savedColor  = scheduleData[direction]?.[day]?.color || '';
+      // Fix 2: use cssClass for styling, not raw value
+      const savedCss    = COLORS.find(c => c.value === savedColor)?.cssClass || '';
+      let html = `<select class="color-select ${savedCss}" data-direction="${direction}" data-day="${day}" data-type="color">`;
+      COLORS.forEach(c => {
+        html += `<option value="${c.value}" ${c.value === savedColor ? 'selected' : ''}>${c.label}</option>`;
       });
-      html += '</select>';
-      return html;
+      return html + '</select>';
     }
 
     function createTimeSelect(direction, day) {
-      const savedTime = (scheduleData[direction] && scheduleData[direction][day] && scheduleData[direction][day].time) || '';
+      const savedTime = scheduleData[direction]?.[day]?.time || '';
       let html = `<select class="time-select" data-direction="${direction}" data-day="${day}" data-type="time">`;
       html += '<option value="">--:--</option>';
-      TIMES.forEach(time => {
-        html += `<option value="${time}" ${time === savedTime ? 'selected' : ''}>${time}</option>`;
+      TIMES.forEach(t => {
+        html += `<option value="${t}" ${t === savedTime ? 'selected' : ''}>${t}</option>`;
       });
-      html += '</select>';
-      return html;
+      return html + '</select>';
     }
 
     function handleChange(e) {
       if (isLocked && !isAdmin()) return;
+      const { direction, day, type } = e.target.dataset;
+      const value = e.target.value;
 
-      const select = e.target;
-      const direction = select.dataset.direction;
-      const day = select.dataset.day;
-      const type = select.dataset.type;
-      const value = select.value;
-
-      if (!scheduleData[direction]) scheduleData[direction] = {};
+      if (!scheduleData[direction])      scheduleData[direction]      = {};
       if (!scheduleData[direction][day]) scheduleData[direction][day] = {};
       scheduleData[direction][day][type] = value;
 
       if (type === 'color') {
-        select.className = `color-select ${value}`;
+        // Fix 2: look up cssClass from COLORS instead of applying value as class
+        const cssClass = COLORS.find(c => c.value === value)?.cssClass || '';
+        e.target.className = `color-select ${cssClass}`;
       }
 
       saveToLocalStorage();
@@ -592,13 +640,9 @@
 
     function handleNoteChange(e) {
       if (isLocked && !isAdmin()) return;
-
-      const textarea = e.target;
-      const day = textarea.dataset.day;
-
+      const { day } = e.target.dataset;
       if (!scheduleData.notes) scheduleData.notes = {};
-      scheduleData.notes[day] = textarea.value;
-
+      scheduleData.notes[day] = e.target.value;
       saveToLocalStorage();
       setDirty(true);
     }
@@ -622,17 +666,17 @@
     function renderRequests() {
       const container = document.getElementById('requestsList');
       container.innerHTML = '';
-
       requests.forEach((req, index) => {
-        const div = document.createElement('div');
+        const div    = document.createElement('div');
         div.className = 'request-item';
+        // Fix 2: look up cssClass from COLORS
+        const cssClass = COLORS.find(c => c.value === req.child)?.cssClass || '';
         div.innerHTML = `
-          <select class="${req.child}" onchange="updateRequestChild(${index}, this.value)">
+          <select class="${cssClass}" onchange="updateRequestChild(${index}, this.value)">
             ${COLORS.map(c => `<option value="${c.value}" ${c.value === req.child ? 'selected' : ''}>${c.label}</option>`).join('')}
           </select>
           <textarea rows="1" placeholder="לדוגמה: מעדיף ביום ג׳" oninput="updateRequestText(${index}, this.value)">${req.text || ''}</textarea>
-          <button class="remove-request-btn" onclick="removeRequest(${index})">×</button>
-        `;
+          <button class="remove-request-btn" onclick="removeRequest(${index})">×</button>`;
         container.appendChild(div);
       });
     }
@@ -653,58 +697,42 @@
     }
 
     function dataUrlApproxBytes(dataUrl) {
-      // Rough estimate of bytes from base64 length
       if (!dataUrl) return 0;
       const comma = dataUrl.indexOf(',');
-      const b64 = comma >= 0 ? dataUrl.slice(comma + 1) : dataUrl;
+      const b64   = comma >= 0 ? dataUrl.slice(comma + 1) : dataUrl;
       return Math.floor((b64.length * 3) / 4);
     }
 
     function compressImageToDataUrl(file, opts) {
       const options = Object.assign({
-        maxWidth: 1200,
-        maxHeight: 1200,
-        mime: 'image/jpeg',
-        quality: 0.82,
-        maxBytes: 900 * 1024
+        maxWidth: 1200, maxHeight: 1200, mime: 'image/jpeg', quality: 0.82, maxBytes: 900 * 1024
       }, opts || {});
 
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onerror = () => reject(new Error('FileReader error'));
-        reader.onload = () => {
+        reader.onload  = () => {
           const img = new Image();
           img.onerror = () => reject(new Error('Image load error'));
-          img.onload = () => {
+          img.onload  = () => {
             let { width, height } = img;
-
-            const scale = Math.min(
-              1,
-              options.maxWidth / width,
-              options.maxHeight / height
-            );
-
-            width = Math.max(1, Math.round(width * scale));
+            const scale = Math.min(1, options.maxWidth / width, options.maxHeight / height);
+            width  = Math.max(1, Math.round(width  * scale));
             height = Math.max(1, Math.round(height * scale));
 
             const canvas = document.createElement('canvas');
-            canvas.width = width;
+            canvas.width  = width;
             canvas.height = height;
-
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, width, height);
+            canvas.getContext('2d').drawImage(img, 0, 0, width, height);
 
             let q = options.quality;
             let out = canvas.toDataURL(options.mime, q);
-
-            // If still too big, reduce quality a bit
             let guard = 0;
             while (dataUrlApproxBytes(out) > options.maxBytes && q > 0.5 && guard < 6) {
-              q = q - 0.07;
+              q -= 0.07;
               out = canvas.toDataURL(options.mime, q);
               guard++;
             }
-
             resolve(out);
           };
           img.src = reader.result;
@@ -714,37 +742,24 @@
     }
 
     async function handleImageUpload(event) {
-      if (isLocked && !isAdmin()) { 
-        alert('הסידור נעול'); 
-        event.target.value = '';
-        return; 
-      }
-
+      if (isLocked && !isAdmin()) { alert('הסידור נעול'); event.target.value = ''; return; }
       const file = event.target.files[0];
       if (!file) return;
 
-      // On mobile, images can be very large. We compress + resize before saving.
       try {
-        document.getElementById('fileName').textContent = `מעבד תמונה...`;
-
+        document.getElementById('fileName').textContent = 'מעבד תמונה...';
         const dataUrl = await compressImageToDataUrl(file, {
-          maxWidth: 1400,
-          maxHeight: 1400,
-          maxBytes: 900 * 1024
+          maxWidth: 1400, maxHeight: 1400, maxBytes: 900 * 1024
         });
-
-        // keep for save (server will store in Drive)
         scheduleImageData = dataUrl;
         scheduleImageName = file.name;
 
-        // optimistic preview
         const preview = document.getElementById('imagePreview');
         preview.src = dataUrl;
         preview.classList.add('show');
 
         const approxKb = Math.round(dataUrlApproxBytes(dataUrl) / 1024);
         document.getElementById('fileName').textContent = `✓ ${file.name} (לאחר דחיסה: ~${approxKb}KB)`;
-
         setDirty(true);
         saveToLocalStorage();
       } catch (err) {
@@ -755,103 +770,85 @@
       }
     }
 
+    // Fix 3: save button disabled when clean; Fix 7: red warning text when unsaved
     function setDirty(flag) {
       isDirty = !!flag;
       const ind = document.getElementById('dirtyIndicator');
       const btn = document.getElementById('saveBtn');
       if (isDirty) {
-        ind.textContent = 'לא נשמר';
+        ind.textContent = '⚠ לא נשמר';
+        ind.classList.add('unsaved');
         btn.disabled = false;
       } else {
-        ind.textContent = 'נשמר';
-        btn.disabled = false;
+        ind.textContent = '✓ נשמר';
+        ind.classList.remove('unsaved');
+        btn.disabled = true; // Fix 3: was always false
       }
     }
 
-    // FIX: include imageData + imageName in payload so Apps Script can save to Drive
     function buildWeekDataPayload(weekKey) {
       return {
-        weekKey: weekKey,
+        weekKey,
         weekData: {
-          schedule: scheduleData,
-          requests: requests,
-          approvals: approvals,
-          locked: isLocked,
-
-          imageData: (scheduleImageData || ''),
-          imageName: (scheduleImageName || ''),
-          imageUrl: (scheduleImageUrl || ''),
-          imageNameSaved: (scheduleImageName || '')
+          schedule:      scheduleData,
+          requests,
+          approvals,
+          locked:        isLocked,
+          imageData:     scheduleImageData || '',
+          imageName:     scheduleImageName || '',
+          imageUrl:      scheduleImageUrl  || '',
+          imageNameSaved: scheduleImageName || ''
         }
       };
     }
 
     function saveToLocalStorage() {
-      const weekKey = getWeekKey(currentWeekOffset);
-      const allData = JSON.parse(localStorage.getItem('carpoolAllWeeks') || '{}');
-      const wd = buildWeekDataPayload(weekKey).weekData;
-
-      // Avoid bloating localStorage with base64
-      wd.imageData = '';
-
-      // Keep the last known Drive image URL in the local cache (so "החלף" / offline won't hide it)
-      wd.imageUrl = scheduleImageUrl || '';
-      wd.imageName = scheduleImageName || '';
-
+      const weekKey  = getWeekKey(currentWeekOffset);
+      const allData  = JSON.parse(localStorage.getItem('carpoolAllWeeks') || '{}');
+      const wd       = buildWeekDataPayload(weekKey).weekData;
+      wd.imageData   = '';
+      wd.imageUrl    = scheduleImageUrl  || '';
+      wd.imageName   = scheduleImageName || '';
       allData[weekKey] = wd;
       localStorage.setItem('carpoolAllWeeks', JSON.stringify(allData));
     }
 
     async function saveNow() {
-      const weekKey = getWeekKey(currentWeekOffset);
-      await saveToServer(weekKey);
+      await saveToServer(getWeekKey(currentWeekOffset));
     }
 
     async function saveToServer(weekKey) {
-      if (!currentUser || !currentUser.accessCode) return;
-      if (isSaving) return;
-
+      if (!currentUser?.accessCode || isSaving) return;
       isSaving = true;
       showStatus('saving', 'שומר...');
 
-      // Keep a copy of the image data before clearing
       const savedImageData = scheduleImageData || '';
       const savedImageName = scheduleImageName || '';
 
       try {
-        const payload = buildWeekDataPayload(weekKey);
+        const payload  = buildWeekDataPayload(weekKey);
         const response = await fetch(API_URL + '?action=save', {
-          method: 'POST',
+          method:  'POST',
           headers: { 'Content-Type': 'application/json', 'X-API-Key': currentUser.accessCode },
-          body: JSON.stringify(payload)
+          body:    JSON.stringify(payload)
         });
-
         const result = await response.json();
+
         if (!result.success) {
           showStatus('error', 'שגיאה בשמירה');
         } else {
           scheduleImageData = '';
           await loadFromServer(weekKey);
 
-          // Test if the server image URL actually loads
           if (scheduleImageUrl) {
-            const testImg = new Image();
-            const urlToTest = scheduleImageUrl;
-            testImg.onload = function() {
-              // URL works fine, render normally
+            const testImg  = new Image();
+            testImg.onload = () => renderImage();
+            testImg.onerror = () => {
+              if (savedImageData) { scheduleImageData = savedImageData; scheduleImageName = savedImageName; }
               renderImage();
             };
-            testImg.onerror = function() {
-              // URL failed - keep the local base64 copy as fallback
-              if (savedImageData) {
-                scheduleImageData = savedImageData;
-                scheduleImageName = savedImageName;
-              }
-              renderImage();
-            };
-            testImg.src = urlToTest;
+            testImg.src = scheduleImageUrl;
           } else if (savedImageData) {
-            // No URL returned from server, keep local copy
             scheduleImageData = savedImageData;
             scheduleImageName = savedImageName;
             renderImage();
@@ -873,50 +870,47 @@
     async function loadWeekData() {
       const weekKey = getWeekKey(currentWeekOffset);
 
-      if (currentUser && currentUser.accessCode) {
+      if (currentUser?.accessCode) {
         const ok = await loadFromServer(weekKey);
         if (ok) return;
       }
 
-      const allData = JSON.parse(localStorage.getItem('carpoolAllWeeks') || '{}');
+      const allData  = JSON.parse(localStorage.getItem('carpoolAllWeeks') || '{}');
       const weekData = allData[weekKey] || {};
-      scheduleData = weekData.schedule || {};
-      requests = weekData.requests || [];
-      approvals = weekData.approvals || { blue: false, green: false, orange: false, red: false };
-      isLocked = weekData.locked || false;
-      scheduleImageUrl = weekData.imageUrl || '';
+      scheduleData      = weekData.schedule  || {};
+      requests          = weekData.requests  || [];
+      approvals         = weekData.approvals || makeApprovals();
+      isLocked          = weekData.locked    || false;
+      scheduleImageUrl  = weekData.imageUrl  || '';
       scheduleImageName = weekData.imageName || '';
       scheduleImageData = '';
     }
 
     async function loadFromServer(weekKey) {
       try {
-        const response = await fetch(API_URL + `?action=load&weekKey=${encodeURIComponent(weekKey)}`, {
-          method: 'GET',
-          headers: { 'X-API-Key': currentUser.accessCode }
-        });
-
+        const response = await fetch(
+          API_URL + `?action=load&weekKey=${encodeURIComponent(weekKey)}`,
+          { method: 'GET', headers: { 'X-API-Key': currentUser.accessCode } }
+        );
         const result = await response.json();
         if (!result.success) return false;
 
-        const serverData = result.weekData || {};
-        scheduleData = (serverData.schedule || {});
-        if (!scheduleData.out) scheduleData.out = {};
+        const sd = result.weekData || {};
+        scheduleData = sd.schedule || {};
+        if (!scheduleData.out)    scheduleData.out    = {};
         if (!scheduleData.return) scheduleData.return = {};
-        if (!scheduleData.notes) scheduleData.notes = {};
+        if (!scheduleData.notes)  scheduleData.notes  = {};
 
-        requests = Array.isArray(serverData.requests) ? serverData.requests : [];
-        approvals = serverData.approvals || { blue: false, green: false, orange: false, red: false };
-        isLocked = !!serverData.locked;
-
-        scheduleImageUrl = serverData.imageUrl || '';
-        scheduleImageName = serverData.imageName || '';
+        requests          = Array.isArray(sd.requests) ? sd.requests : [];
+        approvals         = sd.approvals || makeApprovals();
+        isLocked          = !!sd.locked;
+        scheduleImageUrl  = sd.imageUrl  || '';
+        scheduleImageName = sd.imageName || '';
         scheduleImageData = '';
 
         const allData = JSON.parse(localStorage.getItem('carpoolAllWeeks') || '{}');
-        allData[weekKey] = serverData;
+        allData[weekKey] = sd;
         localStorage.setItem('carpoolAllWeeks', JSON.stringify(allData));
-
         return true;
       } catch (error) {
         console.error('Load error:', error);
@@ -925,11 +919,7 @@
     }
 
     function toggleApproval(color) {
-      if (isLocked && !isAdmin()) {
-        alert('הסידור נעול');
-        return;
-      }
-
+      if (isLocked && !isAdmin()) { alert('הסידור נעול'); return; }
       approvals[color] = !approvals[color];
       renderApprovals();
       checkLockStatus();
@@ -937,29 +927,29 @@
       setDirty(true);
     }
 
+    // Fix 6: iterate PLAYERS instead of hardcoded color list
     function renderApprovals() {
-      ['blue', 'green', 'orange', 'red'].forEach(color => {
-        const btn = document.getElementById(`approve-${color}`);
-        if (approvals[color]) btn.classList.add('approved');
-        else btn.classList.remove('approved');
+      PLAYERS.forEach(p => {
+        const btn = document.getElementById(`approve-${p.color}`);
+        if (!btn) return;
+        btn.classList.toggle('approved', !!approvals[p.color]);
       });
     }
 
     function checkLockStatus() {
-      const allApproved = Object.values(approvals).every(val => val === true);
+      const allApproved = Object.values(approvals).every(v => v === true);
       isLocked = allApproved;
 
-      const lockStatus = document.getElementById('lockStatus');
+      const el = document.getElementById('lockStatus');
       if (isLocked) {
-        lockStatus.textContent = 'הסידור נעול - כולם אישרו';
-        lockStatus.className = 'lock-status locked';
-        if (!isAdmin()) {
-          disableInputs();
-        }
+        el.textContent = 'הסידור נעול - כולם אישרו';
+        el.className   = 'lock-status locked';
+        if (!isAdmin()) disableInputs();
       } else {
         const approved = Object.values(approvals).filter(v => v).length;
-        lockStatus.textContent = `אושר על ידי ${approved}/4 הורים`;
-        lockStatus.className = 'lock-status';
+        // Fix 6: PLAYERS.length instead of hardcoded 4
+        el.textContent = `אושר על ידי ${approved}/${PLAYERS.length} הורים`;
+        el.className   = 'lock-status';
         enableInputs();
       }
     }
@@ -979,33 +969,31 @@
     }
 
     function showStatus(type, text) {
-      const statusEl = document.getElementById('status');
-      statusEl.textContent = text;
-      statusEl.className = 'status ' + type;
-
-      if (type !== 'saving') {
-        setTimeout(() => { statusEl.className = 'status'; }, 2500);
-      }
+      const el   = document.getElementById('status');
+      el.textContent = text;
+      el.className   = 'status ' + type;
+      if (type !== 'saving') setTimeout(() => { el.className = 'status'; }, 2500);
     }
 
     // ========== Zoom Controls ==========
     let currentZoom = parseInt(localStorage.getItem('carpoolZoom') || '100', 10);
 
+    // Fix 1: base sizes updated to match new larger CSS defaults
     function applyZoom() {
       const scale = currentZoom / 100;
       const table = document.querySelector('.schedule-table');
       if (table) {
-        table.style.fontSize = (8 * scale) + 'px';
-        table.querySelectorAll('th').forEach(el => el.style.fontSize = (9 * scale) + 'px');
-        table.querySelectorAll('.direction-cell').forEach(el => el.style.fontSize = (9 * scale) + 'px');
+        table.style.fontSize = (13 * scale) + 'px';
+        table.querySelectorAll('th').forEach(el           => el.style.fontSize = (14 * scale) + 'px');
+        table.querySelectorAll('.direction-cell').forEach(el => el.style.fontSize = (14 * scale) + 'px');
         table.querySelectorAll('select').forEach(el => {
-          el.style.fontSize = (8 * scale) + 'px';
-          el.style.width = 'auto';
+          el.style.fontSize = (13 * scale) + 'px';
+          el.style.width    = 'auto';
         });
-        table.querySelectorAll('.color-select').forEach(el => el.style.width = (55 * scale) + 'px');
-        table.querySelectorAll('.time-select').forEach(el => el.style.width = (48 * scale) + 'px');
-        table.querySelectorAll('.note-input').forEach(el => el.style.fontSize = (7 * scale) + 'px');
-        table.querySelectorAll('.day-header').forEach(el => el.style.fontSize = (7 * scale) + 'px');
+        table.querySelectorAll('.color-select').forEach(el => el.style.width = (70 * scale) + 'px');
+        table.querySelectorAll('.time-select').forEach(el  => el.style.width = (60 * scale) + 'px');
+        table.querySelectorAll('.note-input').forEach(el   => el.style.fontSize = (12 * scale) + 'px');
+        table.querySelectorAll('.day-header').forEach(el   => el.style.fontSize = (12 * scale) + 'px');
       }
       document.getElementById('zoomLevel').textContent = currentZoom + '%';
     }
@@ -1018,11 +1006,9 @@
 
     // ========== Admin Functions ==========
     function adminUnlock() {
-      if (!isAdmin()) return;
-      if (!confirm('לבטל את נעילת הסידור?')) return;
-
-      approvals = { blue: false, green: false, orange: false, red: false };
-      isLocked = false;
+      if (!isAdmin() || !confirm('לבטל את נעילת הסידור?')) return;
+      approvals = makeApprovals(); // Fix 6
+      isLocked  = false;
       renderApprovals();
       checkLockStatus();
       enableInputs();
@@ -1032,11 +1018,9 @@
     }
 
     function adminResetApprovals() {
-      if (!isAdmin()) return;
-      if (!confirm('לאפס את כל האישורים?')) return;
-
-      approvals = { blue: false, green: false, orange: false, red: false };
-      isLocked = false;
+      if (!isAdmin() || !confirm('לאפס את כל האישורים?')) return;
+      approvals = makeApprovals(); // Fix 6
+      isLocked  = false;
       renderApprovals();
       checkLockStatus();
       enableInputs();
@@ -1045,21 +1029,20 @@
       showStatus('saved', 'אישורים אופסו');
     }
 
+    // Fix 4: removed erroneous renderImage() call that used 'REMOVE' as an image src;
+    //        DOM reset now happens cleanly before any image rendering.
     function adminDeleteImage() {
-      if (!isAdmin()) return;
-      if (!confirm('למחוק את תמונת הסידור?')) return;
+      if (!isAdmin() || !confirm('למחוק את תמונת הסידור?')) return;
 
-      scheduleImageUrl = '';
+      scheduleImageUrl  = '';
       scheduleImageName = '';
-      scheduleImageData = 'REMOVE';
-      renderImage();
+      scheduleImageData = 'REMOVE'; // server sentinel: delete file from Drive on next save
 
-      // Reset image display
       const preview = document.getElementById('imagePreview');
       preview.src = '';
-      preview.classList.remove('show');
+      preview.classList.remove('show', 'zoomed');
       document.getElementById('fileName').textContent = '';
-      document.getElementById('imageUpload').value = '';
+      document.getElementById('imageUpload').value   = '';
 
       saveToLocalStorage();
       setDirty(true);
@@ -1067,9 +1050,7 @@
     }
 
     function adminClearRequests() {
-      if (!isAdmin()) return;
-      if (!confirm('למחוק את כל הבקשות?')) return;
-
+      if (!isAdmin() || !confirm('למחוק את כל הבקשות?')) return;
       requests = [];
       renderRequests();
       saveToLocalStorage();
@@ -1080,40 +1061,36 @@
     // ========== Smart Fill ==========
     function smartFill() {
       if (isLocked && !isAdmin()) { alert('הסידור נעול'); return; }
-
       const text = document.getElementById('smartFillText').value.trim();
       if (!text) { alert('יש להזין טקסט'); return; }
-
       const mode = document.getElementById('smartFillMode').value;
 
-      // Mappings
-      const colorMap = {
-        'אורי': 'blue', 'uri': 'blue', 'אורי': 'blue',
-        'נועם': 'green', 'noam': 'green',
-        'טמיר': 'orange', 'tamir': 'orange',
-        'עדי': 'red', 'adi': 'red'
-      };
+      // Fix 5 + Fix 6: colorMap built from PLAYERS — no duplicate keys, no hardcoding
+      const colorMap = {};
+      PLAYERS.forEach(p => { colorMap[p.name] = p.color; });
+      // English aliases
+      colorMap['uri']   = 'blue';
+      colorMap['noam']  = 'green';
+      colorMap['tamir'] = 'orange';
+      colorMap['adi']   = 'red';
+
       const dayMap = {
-        'ראשון': 'sunday', 'א׳': 'sunday', "א'": 'sunday', 'sunday': 'sunday',
-        'שני': 'monday', 'ב׳': 'monday', "ב'": 'monday', 'monday': 'monday',
-        'שלישי': 'tuesday', 'ג׳': 'tuesday', "ג'": 'tuesday', 'tuesday': 'tuesday',
+        'ראשון': 'sunday',    'א׳': 'sunday',    "א'": 'sunday',    'sunday': 'sunday',
+        'שני':   'monday',    'ב׳': 'monday',    "ב'": 'monday',    'monday': 'monday',
+        'שלישי': 'tuesday',   'ג׳': 'tuesday',   "ג'": 'tuesday',   'tuesday': 'tuesday',
         'רביעי': 'wednesday', 'ד׳': 'wednesday', "ד'": 'wednesday', 'wednesday': 'wednesday',
-        'חמישי': 'thursday', 'ה׳': 'thursday', "ה'": 'thursday', 'thursday': 'thursday'
+        'חמישי': 'thursday',  'ה׳': 'thursday',  "ה'": 'thursday',  'thursday': 'thursday'
       };
       const dirMap = {
-        'הלוך': 'out', 'לקחת': 'out', 'לוקח': 'out', 'לקחת': 'out', 'נסיעה': 'out',
-        'חזור': 'return', 'חזרה': 'return', 'לחזור': 'return', 'מחזיר': 'return', 'מחזירה': 'return',
-        'שניהם': 'both', 'הלוך וחזור': 'both', 'וחזור': 'both'
+        'הלוך':   'out',    'לקחת': 'out',    'לוקח': 'out',   'נסיעה':   'out',
+        'חזור':   'return', 'חזרה': 'return', 'לחזור': 'return', 'מחזיר': 'return', 'מחזירה': 'return',
+        'שניהם':  'both',   'הלוך וחזור': 'both', 'וחזור': 'both'
       };
 
-      const changes = [];
-
-      // Split into segments by person name
-      const segments = [];
-      const colorNames = Object.keys(colorMap);
-
-      // Find all name positions
+      const changes       = [];
+      const colorNames    = Object.keys(colorMap);
       const namePositions = [];
+
       colorNames.forEach(name => {
         let pos = 0;
         while ((pos = text.indexOf(name, pos)) !== -1) {
@@ -1123,70 +1100,52 @@
       });
       namePositions.sort((a, b) => a.pos - b.pos);
 
-      // Extract unique segments per person
+      const segments = [];
       for (let i = 0; i < namePositions.length; i++) {
         const start = namePositions[i].pos;
-        const end = namePositions[i + 1] ? namePositions[i + 1].pos : text.length;
+        const end   = namePositions[i + 1] ? namePositions[i + 1].pos : text.length;
         segments.push({ name: namePositions[i].name, segment: text.substring(start, end) });
       }
+      if (segments.length === 0) segments.push({ name: null, segment: text });
 
-      if (segments.length === 0) {
-        // Try to parse without person name context (single person segment)
-        segments.push({ name: null, segment: text });
-      }
+      if (mode === 'replace') { scheduleData.out = {}; scheduleData.return = {}; }
 
-      if (mode === 'replace') {
-        // Clear schedule
-        scheduleData.out = {};
-        scheduleData.return = {};
-      }
-
-      // Parse each segment
       segments.forEach(({ name, segment }) => {
         const color = name ? colorMap[name] : null;
         if (!color) return;
 
-        // Find days and directions in this segment
-        const lowerSeg = segment;
-
-        // Check for "הלוך וחזור" patterns
-        const bothPattern = /הלוך\s*וחזור/g;
-        let hasBoth = bothPattern.test(lowerSeg);
+        const hasBoth = /הלוך\s*וחזור/.test(segment);
 
         Object.keys(dayMap).forEach(dayHebrew => {
-          if (!lowerSeg.includes(dayHebrew)) return;
-          const day = dayMap[dayHebrew];
-
-          // Extract time near this day mention
-          const dayPos = lowerSeg.indexOf(dayHebrew);
-          const context = lowerSeg.substring(Math.max(0, dayPos - 30), Math.min(lowerSeg.length, dayPos + 60));
+          if (!segment.includes(dayHebrew)) return;
+          const day       = dayMap[dayHebrew];
+          const dayPos    = segment.indexOf(dayHebrew);
+          const context   = segment.substring(Math.max(0, dayPos - 30), Math.min(segment.length, dayPos + 60));
           const timeMatch = context.match(/(\d{1,2})[:\.](\d{2})/);
-          const time = timeMatch ? `${timeMatch[1].padStart(2, '0')}:${timeMatch[2]}` : '';
+          const time      = timeMatch ? `${String(timeMatch[1]).padStart(2,'0')}:${timeMatch[2]}` : '';
 
-          // Determine direction from context around this day
-          const contextBefore = lowerSeg.substring(Math.max(0, dayPos - 60), dayPos + dayHebrew.length + 30);
+          const contextBefore = segment.substring(Math.max(0, dayPos - 60), dayPos + dayHebrew.length + 30);
           let dir = null;
 
           if (hasBoth || /הלוך\s*וחזור/.test(contextBefore)) {
             dir = 'both';
           } else {
-            for (const [dirWord, dirVal] of Object.entries(dirMap)) {
-              if (dirVal === 'both') continue;
-              if (contextBefore.includes(dirWord)) { dir = dirVal; break; }
+            for (const [word, val] of Object.entries(dirMap)) {
+              if (val === 'both') continue;
+              if (contextBefore.includes(word)) { dir = val; break; }
             }
           }
-
-          if (!dir) dir = 'out'; // default
+          if (!dir) dir = 'out';
 
           if (dir === 'both' || dir === 'out') {
-            if (!scheduleData.out) scheduleData.out = {};
-            if (!scheduleData.out[day]) scheduleData.out[day] = {};
+            if (!scheduleData.out)       scheduleData.out       = {};
+            if (!scheduleData.out[day])  scheduleData.out[day]  = {};
             scheduleData.out[day].color = color;
             if (time) scheduleData.out[day].time = time;
             changes.push(`${name} הלוך ${dayHebrew}${time ? ' ' + time : ''}`);
           }
           if (dir === 'both' || dir === 'return') {
-            if (!scheduleData.return) scheduleData.return = {};
+            if (!scheduleData.return)      scheduleData.return      = {};
             if (!scheduleData.return[day]) scheduleData.return[day] = {};
             scheduleData.return[day].color = color;
             if (time) scheduleData.return[day].time = time;
@@ -1204,10 +1163,9 @@
       saveToLocalStorage();
       setDirty(true);
 
-      const preview = document.getElementById('smartFillPreview');
-      preview.textContent = '✓ מוקם: ' + changes.join(' | ');
+      const preview   = document.getElementById('smartFillPreview');
+      preview.textContent  = '✓ מוקם: ' + changes.join(' | ');
       preview.style.display = 'block';
-
       showStatus('saved', `✓ ${changes.length} נסיעות מוקמו`);
     }
 
