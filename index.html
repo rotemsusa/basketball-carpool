@@ -57,14 +57,16 @@
     /* Fix 1: increased from 9px */
     .week-title { font-size: 13px; font-weight: bold; color: #333; }
 
+    /* table-layout: fixed lets the browser distribute columns within 100% width;
+       overflow-x on the wrapper is kept as a safety net for extreme zoom levels */
     .table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
     /* Fix 1: increased from 11px */
-    .schedule-table { border-collapse: collapse; font-size: 13px; width: 100%; margin-bottom: 5px; }
+    .schedule-table { border-collapse: collapse; font-size: 13px; width: 100%; margin-bottom: 5px; table-layout: fixed; }
     /* Fix 1: increased from 12px */
-    .schedule-table th { background: #555; color: white; padding: 6px 2px; text-align: center; border: 1px solid #444; font-size: 14px; }
+    .schedule-table th { background: #555; color: white; padding: 6px 2px; text-align: center; border: 1px solid #444; font-size: 14px; word-break: keep-all; }
     .schedule-table td { padding: 4px 2px; text-align: center; border: 1px solid #ddd; background: #f9f9f9; }
-    /* Fix 1: increased from 12px */
-    .schedule-table td.direction-cell { background: #e8e8e8; font-weight: bold; font-size: 14px; color: #333; width: 45px; }
+    /* Fix 1: increased from 12px; fixed pixel width anchors the direction column */
+    .schedule-table td.direction-cell { background: #e8e8e8; font-weight: bold; font-size: 13px; color: #333; width: 40px; }
     /* Fix 1: increased from 10px */
     .day-header { font-size: 12px; color: #fff; display: block; opacity: 0.9; }
 
@@ -980,7 +982,9 @@
     }
 
     // ========== Zoom Controls ==========
-    let currentZoom = parseInt(localStorage.getItem('carpoolZoom') || '100', 10);
+    // Default to 85% on narrow phones so the table fits comfortably without zooming out manually
+    const defaultZoom = window.innerWidth < 480 ? '85' : '100';
+    let currentZoom = parseInt(localStorage.getItem('carpoolZoom') || defaultZoom, 10);
 
     // Fix 1: base sizes updated to match new larger CSS defaults
     function applyZoom() {
@@ -988,16 +992,13 @@
       const table = document.querySelector('.schedule-table');
       if (table) {
         table.style.fontSize = (13 * scale) + 'px';
-        table.querySelectorAll('th').forEach(el           => el.style.fontSize = (14 * scale) + 'px');
-        table.querySelectorAll('.direction-cell').forEach(el => el.style.fontSize = (14 * scale) + 'px');
-        table.querySelectorAll('select').forEach(el => {
-          el.style.fontSize = (13 * scale) + 'px';
-          el.style.width    = 'auto';
-        });
-        table.querySelectorAll('.color-select').forEach(el => el.style.width = (70 * scale) + 'px');
-        table.querySelectorAll('.time-select').forEach(el  => el.style.width = (60 * scale) + 'px');
-        table.querySelectorAll('.note-input').forEach(el   => el.style.fontSize = (12 * scale) + 'px');
-        table.querySelectorAll('.day-header').forEach(el   => el.style.fontSize = (12 * scale) + 'px');
+        table.querySelectorAll('th').forEach(el              => el.style.fontSize = (14 * scale) + 'px');
+        table.querySelectorAll('.direction-cell').forEach(el => el.style.fontSize = (13 * scale) + 'px');
+        // No width set on selects — CSS width:100% + table-layout:fixed handles it.
+        // Setting explicit px widths here was the cause of horizontal overflow on mobile.
+        table.querySelectorAll('select').forEach(el          => el.style.fontSize = (12 * scale) + 'px');
+        table.querySelectorAll('.note-input').forEach(el     => el.style.fontSize = (11 * scale) + 'px');
+        table.querySelectorAll('.day-header').forEach(el     => el.style.fontSize = (11 * scale) + 'px');
       }
       document.getElementById('zoomLevel').textContent = currentZoom + '%';
     }
