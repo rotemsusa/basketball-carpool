@@ -6,8 +6,7 @@
   <title>קארפול כדורסל</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { overflow-x: hidden; }
-    body { font-family: Arial, sans-serif; background: #2a2a2a; min-height: 100vh; display: flex; justify-content: center; padding: 3px; max-width: 100%; overflow-x: hidden; }
+    body { font-family: Arial, sans-serif; background: #2a2a2a; min-height: 100vh; display: flex; justify-content: center; padding: 3px; }
 
     .login-screen { background: white; border-radius: 15px; padding: 30px 25px; width: 90vw; max-width: 400px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); display: flex; flex-direction: column; align-items: center; }
     .login-screen h1 { font-size: 22px; color: #333; margin-bottom: 10px; text-align: center; }
@@ -481,7 +480,7 @@
         `${formatDate(dates[0])} - ${formatDate(dates[4])}`;
 
       const dateHeaders = document.getElementById('dateHeaders');
-      dateHeaders.innerHTML = '<th></th>';
+      dateHeaders.innerHTML = '<th style="width:40px"></th>'; // anchors the direction column for table-layout:fixed
       dates.forEach((date, i) => {
         const th = document.createElement('th');
         th.innerHTML = `${DAY_NAMES[i]}<br><span class="day-header">${formatDate(date)}</span>`;
